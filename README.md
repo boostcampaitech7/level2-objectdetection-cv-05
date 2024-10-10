@@ -1,4 +1,4 @@
-# Sketch 이미지 데이터 분류
+# 재활용 품목 분류를 위한 Object Detection
 
 ## 🥇 팀 구성원
 
