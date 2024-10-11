@@ -40,7 +40,7 @@ def main():
             predict_string = df.loc[df['image_id'] == image_id, 'PredictionString'].iloc[0]
             boxes, scores, labels = process_prediction_string(predict_string, img_width, img_height)
             
-            if boxes:  # Only add non-empty predictions
+            if boxes:
                 boxes_list.append(boxes)
                 scores_list.append(scores)
                 labels_list.append(labels)
