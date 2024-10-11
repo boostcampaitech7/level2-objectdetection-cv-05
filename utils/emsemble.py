@@ -21,6 +21,8 @@ def main():
     submission_files = [
         '/data/ephemeral/home/mmdetection_3/emsmeble/submission_noTTA.csv',
         '/data/ephemeral/home/mmdetection_3/emsmeble/submission_test.csv',
+         '/data/ephemeral/home/mmdetection_3/emsmeble/submission_test.csv',
+          '/data/ephemeral/home/mmdetection_3/emsmeble/submission_test.csv',
     ]
 
     submission_df = [pd.read_csv(f) for f in submission_files]
