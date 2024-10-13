@@ -33,12 +33,12 @@ def main():
     cfg.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
     # 체크포인트에서 학습 재개 설정
-    if args.resume:
+    if args.resume == 'auto':
+        cfg.resume = True
+        cfg.load_from = None
+    elif args.resume is not None:
         cfg.resume = True
         cfg.load_from = args.resume
-    else:
-        cfg.resume = False
-        cfg.load_from = None
 
     # 설정 출력 (디버깅용)
     print(cfg.pretty_text)
