@@ -1,5 +1,6 @@
 import json
 import numpy as np
+import pandas as pd
 from sklearn.model_selection import StratifiedGroupKFold
 from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
 from collections import defaultdict
@@ -18,8 +19,7 @@ def save_coco_json(data, output_file):
 
 def get_image_class_and_bbox_counts(annotations):
     image_class_bbox_counts = defaultdict(lambda: {'class_counts': defaultdict(int), 'bbox_sizes': []})
-    criterion_area = lambda x : 0 if x > 0.6 * 1e6 else (1 if x > 0.2 * 1e6 else 2)
-    criterion_cnt = lambda x : 0 if x > 30 else (1 if x > 10 else 2)
+    
     
     ids = []
     for ann in annotations:
@@ -35,12 +35,25 @@ def get_image_class_and_bbox_counts(annotations):
     ids = set(ids)
     image_info = np.array([
         [max(image_class_bbox_counts[id]['class_counts']),
-         criterion_area(np.mean(image_class_bbox_counts[id]['bbox_sizes'])),
-         criterion_cnt(len(image_class_bbox_counts[id]['bbox_sizes']))
+         np.mean(image_class_bbox_counts[id]['bbox_sizes']),
+         len(image_class_bbox_counts[id]['bbox_sizes'])
          ] for id in ids
         ])
     
-    # print(len(set([max(image_class_bbox_counts[id]['class_counts']) for id in ids])))
+    image_info[:, 1] = pd.qcut(
+        image_info[:, 1], 
+        q=10,
+        labels=False,
+        duplicates='drop'
+        )
+    
+    image_info[:, 2] = pd.qcut(
+        image_info[:, 2], 
+        q=5,
+        labels=False,
+        duplicates='drop'
+    )
+    
     return image_info
 
 
