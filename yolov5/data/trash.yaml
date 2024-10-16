@@ -1,0 +1,5 @@
+train: split/train
+val: split/val
+
+nc: 10
+names: ['General trash', 'Paper', 'Paper pack', 'Metal', 'Glass', 'Plastic', 'Styrofoam', 'Plastic bag', 'Battery', 'Clothing']
