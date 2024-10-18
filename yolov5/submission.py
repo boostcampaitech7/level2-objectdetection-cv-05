@@ -9,13 +9,13 @@ from tqdm import tqdm
 
 from ultralytics import YOLO
 
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=str, help="Specify the file path of the model for training")
-    parser.add_argument("--dataset_path", type=str, default="/data/ephemeral/home/dataset_yolo/images", help="Set the file path where the training dataset images are stored")
-    parser.add_argument("--json_path", type=str, default="/data/ephemeral/home/dataset_yolo/test.json", help="Define the file path for the test JSON file")
-    args = parser.parse_args()
-    return args
+# def parse_args():
+#     parser = argparse.ArgumentParser()
+#     parser.add_argument("--model", type=str, help="Specify the file path of the model for training")
+#     parser.add_argument("--dataset_path", type=str, default="/data/ephemeral/home/dataset_yolo/images", help="Set the file path where the training dataset images are stored")
+#     parser.add_argument("--json_path", type=str, default="/data/ephemeral/home/dataset_yolo/test.json", help="Define the file path for the test JSON file")
+#     args = parser.parse_args()
+#     return args
 
 class CustomDataset(Dataset):
     def __init__(self, annotation, data_dir):
@@ -37,14 +37,16 @@ def get_bboxes(annotation, data_loader, model):
     prediction_strings = []
     file_names = []
 
-    COCO(annotation)
+    coco = COCO(annotation)
     for _, image_batch in enumerate(tqdm(data_loader)):
-
         with torch.no_grad():
             predictions = model(image_batch)
         batch_size = len(image_batch)
         for idx in range(batch_size):
-            file_name = os.path.join("test", os.path.basename(image_batch[idx]))
+            # 여기서 file_name을 생성하는 부분을 수정합니다
+            image_info = coco.loadImgs(coco.getImgIds()[_*batch_size + idx])[0]
+            file_name = "test/" + image_info["file_name"]
+            
             pred_info = predictions[idx].boxes
             classes = pred_info.cls.tolist()
             bboxes = pred_info.xyxy.tolist()
@@ -78,7 +80,7 @@ def inference(args):
     submission["PredictionString"] = prediction_strings
     submission["image_id"] = file_names
     
-    submission.to_csv("./yolo_submission.csv", index=None)
+    submission.to_csv("./submission_new.csv", index=None)
     print(submission.head())
 
 
