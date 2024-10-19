@@ -195,6 +195,7 @@
 - openmim
 - mmcv-full==1.7.0
 - wandb==0.18.0
+- iterative-stratification
 
 `pip install -r requirements.txt`
 
