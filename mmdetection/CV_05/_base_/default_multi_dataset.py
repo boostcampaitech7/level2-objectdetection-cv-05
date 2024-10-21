@@ -1,4 +1,5 @@
 num_classes = 10
+image_size = (1024, 1024)
 classes = ("General trash", "Paper", "Paper pack", "Metal", "Glass", 
            "Plastic", "Styrofoam", "Plastic bag", "Battery", "Clothing")
 
