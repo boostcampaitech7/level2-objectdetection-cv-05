@@ -28,8 +28,9 @@ color_space = [
 
 backend_args = None
 train_pipeline = [
-    dict(type='LoadImageFromFile', backend_args=backend_args),
-    dict(type='LoadAnnotations', with_bbox=True),
+    dict(type='Mosaic', img_scale=(1024, 1024), prob=1.0),
+    dict(type='RandomFlip', prob=0.5),
+    dict(type='RandAugment', aug_space=color_space, aug_num=1),
     # dict(type='PhotoMetricDistortion'),
     # dict(type='Corrupt', corruption='gaussian_blur'),
     dict(
@@ -43,8 +44,6 @@ train_pipeline = [
         crop_size=image_size,
         recompute_bbox=True,
         allow_negative_crop=True),
-    dict(type='RandomFlip', prob=0.5),
-    dict(type='RandAugment', aug_space=color_space, aug_num=1),
     dict(type='FilterAnnotations', min_gt_bbox_wh=(1e-2, 1e-2)),
     dict(type='PackDetInputs')
 ]
@@ -57,13 +56,20 @@ train_dataloader = dict(
     sampler=dict(type='DefaultSampler', shuffle=True),
     batch_sampler=dict(type='AspectRatioBatchSampler'),
     dataset=dict(
-        type=dataset_type,
-        metainfo=dict(classes=classes),
-        data_root=data_root,
-        ann_file=train_ann_file_name,
-        data_prefix=dict(img=img_folder),
-        filter_cfg=dict(filter_empty_gt=False, min_size=32)),
-    pipeline=train_pipeline
+        # use MultiImageMixDataset wrapper to support mosaic and mixup
+        type='MultiImageMixDataset',
+        dataset=dict(
+            type=dataset_type,
+            metainfo=dict(classes=classes),
+            data_root=data_root,
+            ann_file=train_ann_file_name,
+            data_prefix=dict(img=img_folder),
+            pipeline=[
+                dict(type='LoadImageFromFile', backend_args=backend_args),
+                dict(type='LoadAnnotations', with_bbox=True)
+            ],
+            filter_cfg=dict(filter_empty_gt=False, min_size=32)),
+        pipeline=train_pipeline)
 )
 
 
