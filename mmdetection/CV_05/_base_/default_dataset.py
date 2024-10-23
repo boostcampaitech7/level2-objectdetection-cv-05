@@ -62,9 +62,9 @@ train_dataloader = dict(
         metainfo=dict(classes=classes),
         data_root=data_root,
         ann_file=train_ann_file_name,
+        pipeline=train_pipeline,
         data_prefix=dict(img=img_folder),
-        filter_cfg=dict(filter_empty_gt=False, min_size=32)),
-    pipeline=train_pipeline
+        filter_cfg=dict(filter_empty_gt=False, min_size=32))
 )
 
 
