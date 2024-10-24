@@ -119,30 +119,37 @@
 📦level2-objectdetection-cv-05
  ┣ 📂.github
  ┃ ┗ 📜.keep
- ┣ 📂data
- ┃ ┣ 📜.DS_Store
- ┃ ┣ 📜._DS_Store
- ┃ ┣ 📜._sample_submission.csv
- ┃ ┣ 📜._test.csv
- ┃ ┣ 📜._train.csv
- ┃ ┣ 📜sample_submission.csv
- ┃ ┣ 📜test.csv
- ┃ ┗ 📜train.csv
- ┣ 📂model_checkpoints
- ┣ 📂training_logs
- ┃ ┗ 📜training_log.txt
- ┣ 📜.gitignore
- ┣ 📜augmentation.py
- ┣ 📜augmentation_list.txt
- ┣ 📜dataset.py
- ┣ 📜inference.py
- ┣ 📜main.py
- ┣ 📜model.py
- ┣ 📜README.md
- ┣ 📜requirements.txt
- ┣ 📜seed.py
- ┣ 📜timm_list.txt
- ┗ 📜train.py
+ ┣ 📂EDA
+ ┃ ┣ 📜EDA.ipynb
+ ┃ ┣ 📜heatmap.png
+ ┣ 📂mmdetection
+ ┃ ┣ 📜Co-detr
+ ┃ ┃ ┗ 📜co-detrl.py
+ ┃ ┣ 📜DiNO
+ ┃ ┃ ┗ 📜dino_Swin_L_baseline.py
+ ┃ ┣ 📜_base_
+ ┃ ┃ ┗ 📜default_dataset.py
+ ┃ ┃ ┗ 📜default_multi_dataset.py
+ ┃ ┃ ┗ 📜default_runtime.py
+ ┃ ┃ ┗ 📜default_tta.py
+ ┃ ┣ 📜cascade-RCNN
+ ┃ ┃ ┗ 📜cascade-rcbb_convnextV2.py
+ ┃ ┃ ┗ 📜cascade-rcnn_swin_L.py
+ ┣ 📂utils
+ ┃ ┣ 📜SR_X2_preprocessing
+ ┃ ┃ ┗ 📜4_crop.ipynb
+ ┃ ┃ ┗ 📜5_random.ipynb
+ ┃ ┃ ┗ 📜Update_json.ipynb
+ ┃ ┣ 📜mmdetection
+ ┃ ┃ ┗ 📜inference.py
+ ┃ ┃ ┗ 📜inference_mmdet_v2.py
+ ┃ ┃ ┗ 📜train.py
+ ┃ ┣ 📜MultiLabelStratifiedKFold_COCO.py
+ ┃ ┣ 📜Pascal_to_coco.ipynb
+ ┃ ┣ 📜StratifiedKFold_COCO.py
+ ┃ ┣ 📜emsemble.py
+ ┗ ┗ 📜inference_visualizer.py
+
 ```
 
 #### 1) `train.py`
