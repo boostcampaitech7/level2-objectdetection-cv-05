@@ -66,7 +66,6 @@
 
 - 2024.09.30 (월) 10:00 ~ 2024.10.24 (목) 19:00
 
-프로젝트 세부 일정
 ![image](https://github.com/user-attachments/assets/e6d03619-fe9b-4b14-8266-e169c765f9a0)
 
 
