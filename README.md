@@ -84,8 +84,8 @@
 
 ## 🏆 프로젝트 결과
 
-- Public 1등
-- Private 1등
+- Public 1등, Private 1등
+
   ![image](https://github.com/user-attachments/assets/4956fa94-51b7-498a-b8c8-4cc7dd8cea33)
 
 ## ✏️ Wrap-Up Report
