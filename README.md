@@ -86,7 +86,7 @@
 
 - Public 1등
 - Private 1등
-- ![image](https://github.com/user-attachments/assets/4956fa94-51b7-498a-b8c8-4cc7dd8cea33)
+  ![image](https://github.com/user-attachments/assets/4956fa94-51b7-498a-b8c8-4cc7dd8cea33)
 
 ## ✏️ Wrap-Up Report
 
@@ -164,7 +164,6 @@
 ![image](https://github.com/user-attachments/assets/b2e1d2b4-822e-4a39-86b1-97319114f8c8)
 
 - CO-DETR + DDQ-DETR + Cascade R-CNN + YOLO(emsemble) 모델 사용
-- 
 
 
 
