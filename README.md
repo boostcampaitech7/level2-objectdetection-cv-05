@@ -135,11 +135,16 @@
  ┃ ┣ 📜_base_
  ┃ ┃ ┗ 📜default_dataset.py
  ┃ ┃ ┗ 📜default_multi_dataset.py
+ ┃ ┃ ┗ 📜simple_augmentation_dataset.py
+ ┃ ┃ ┗ 📜heavy_augmentation_dataset.py
+ ┃ ┃ ┗ 📜lsj_mosaic_augmentation_dataset.py
  ┃ ┃ ┗ 📜default_runtime.py
  ┃ ┃ ┗ 📜default_tta.py
  ┃ ┣ 📜cascade-RCNN
  ┃ ┃ ┗ 📜cascade-rcbb_convnextV2.py
  ┃ ┃ ┗ 📜cascade-rcnn_swin_L.py
+ ┃ ┣ 📜ddq
+ ┃ ┃ ┗ 📜ddq_swinl.py
  ┣ 📂utils
  ┃ ┣ 📜SR_X2_preprocessing
  ┃ ┃ ┗ 📜4_crop.ipynb
